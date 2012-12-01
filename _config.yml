@@ -1,0 +1,8 @@
+# GitHub's forced options, might as well develop with them
+safe: true
+lsi: false
+pygments: true
+
+# Convenience options for development server
+auto: true
+
