@@ -1,0 +1,67 @@
+---
+layout: default
+title: RubyCAS
+stylesheet: index
+---
+
+<p class="intro">
+  RubyCAS-Server is an implementation of the server-end of JA-SIG's
+  <a href="http://www.jasig.org/cas/protocol" rel="nofollow">CAS protocol</a>,
+  providing a cross-domain single sign-on solution for web applications.
+</p>
+
+
+
+<h2>Overview</h2>
+
+<h3>RubyCAS-Server gives you:</h3>
+<ul>
+  <li>A stand-alone <strong>central login page</strong> where the user enters their credentials (i.e. their username and password).</li>
+  <li>A mechanism for <strong>validating the user's credentials against various backends</strong> (a table in a SQL database, ActiveDirectory/LDAP, Google accounts, etc.)</li>
+  <li>A back-end validator where CAS-enabled client applications connect to check whether the current user is authenticated (if the user has already been authenticated with the CAS server, then they are permitted to proceed, otherwise they are redirected to the CAS server's login page for authentication).</li>
+  <li>Full compatibility with the open, multi-platform CAS protocol (CAS clients are implemented for a wide range of platforms, including PHP, various Java frameworks, .NET, Zope, etc.)</li>
+  <li>Multi-language localization -- RubyCAS-Server automatically detects the user's preferred language and presents the appropriate interface.</li>
+</ul>
+
+<h3>Why you would want/need this:</h3>
+<ul>
+  <li>CAS allows you to share authentication across domains. That is, a service at myservice.com and another service at anotherservice.com can share the same sign-on session (without CAS, sharing session information across domains is a lot harder than it sounds -- browsers are specifically designed to make this difficult).</li>
+  <li>The user only sees the login page once -- the first time they try to access any one of your CAS-protected services, and never again until they log out or their single-sign on session expires.</li>
+  <li>Client applications never see the user's actual credentials (i.e. user credentials are less exposed to snooping).</li>
+  <li>RubyCAS-Server can act as a single sign-on solution for a wide range of platforms (see the <a href="http://www.jasig.org/cas/client-integration" rel="nofollow">JA-SIG CAS clients page</a> for details).</li>
+</ul>
+
+<h2>CAS vs. OpenID</h2>
+<p>
+  At the risk of oversimplification, CAS is the preferred choice over OpenID for large, top-down organisations who want to leverage an existing user base. For example, CAS is often deployed by universities that maintain a large, centralized database of users and provide services via a variety of platforms/frameworks.
+</p>
+
+<p>
+  RubyCAS-Server is also used by many smaller sites. This is likely because the server is considerably easier to deploy than a comparable OpenID solution, especially when one wants to wrap single-sign-on around an existing user base.
+</p>
+
+<p>
+  A good explanation of the difference between CAS and OpenID is available on <a href="http://stackoverflow.com/questions/2033026/sso-with-cas-or-oauth/3181557#3181557" rel="nofollow">Stack Overflow</a>.
+</p>
+
+<h2>The Full Explanation</h2>
+
+<p>
+  The idea behind CAS is similar to the way Yahoo, Google, and other major portal sites allow the user to authenticate using a central welcome page. Your CAS server provides the login page where the user enters their username and password. After successful authentication, the server dishes out 'service tickets' that grant access to your CAS-protected services/sites. Your <strong>CAS-protected services never see the user's real credentials</strong>, and <strong>logging in to one service grants authentication for all other services</strong>. The user only sees the login page once, the first time they try to access a CAS-protected service -- hence "<em>single</em> sign-on".
+</p>
+
+<p>
+  RubyCAS-Server is designed to be easy to set up and customize. You do not need to know anything about Ruby to run the server. The front end (the central login page) can be skinned using CSS, and the back-end authentication method for validating usernames and passwords can be configured to use an existing SQL database, Active Directory, LDAP server, etc. For more information on the CAS protocol, have a look at the official <a href="http://www.jasig.org/cas/" rel="nofollow">JA-SIG CAS</a> page. RubyCAS-Server is easiest to deploy on Linux systems, but should work fine on other platforms (e.g. Windows).
+</p>
+
+<p>
+In order to make your services (i.e. your web applications) CAS-protected, each service will require some configuration. Generally this is done by installing a CAS client library. For example for a Ruby on Rails application, you'll have to install RubyCAS-Client, which essentially acts like a standard controller filter. For PHP, install <a href="https://wiki.jasig.org/display/CASC/phpCAS" rel="nofollow">phpCAS</a> and include a small block of code at the top of your CAS-protected PHP pages. For Java-based frameworks, you'll have to install the <a href="https://wiki.jasig.org/display/CASC/CAS+Client+for+Java+3.1" rel="nofollow">Java CAS Client</a> and add some XML to your app server's configuration. Have a look at the <a href="https://wiki.jasig.org/display/CASC/Official+Clients" rel="nofollow">Official</a> and <a href="https://wiki.jasig.org/display/CASC/Unofficial+CAS+Clients">Unofficial</a> CAS client pages for information on clients for other frameworks.
+</p>
+
+<p>
+  To get started quickly, have a look at the <a href="https://github.com/rubycas/rubycas-server/wiki/Quick-Start">QuickStart</a> wiki page for step-by-step installation and usage instructions.
+</p>
+<img src="/images/basic_cas_single_signon_mechanism_diagram.png" alt="Basic CAS Single Sign-On Diagram" />
+<p>
+  RubyCAS-Server is implemented using the <a href="http://www.sinatrarb.com/">Sinatra</a> microframework, and is designed for easy deployment either as a stand-alone server (via WEBrick or Mongrel) or under Apache (via Rack). It fully implements the CAS 2.0 protocol along with certain informal extensions present in the 3.x version fo the JA-SIG reference client.
+</p>
