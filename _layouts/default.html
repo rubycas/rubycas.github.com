@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en-us'>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link type='text/css' rel='stylesheet' href='/css/default.css' />
+  {% if page.stylesheet %}
+    <link type='text/css' rel='stylesheet' href='/css/{{ page.stylesheet }}.css' />
+  {% endif %}
+  <title>{{ page.title }}</title>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <img src="images/rubycas-logo.png" alt="Ruby CAS logo" />
+    </div>
+    <div id="content">
+      {{content}}
+    </div>
+    <div id="navigation">
+      <ul>
+      </ul>
+    </div>
+    <div id='extra'></div>
+    <div id='footer'></div>
+  </div>
+</body>
+</html>
