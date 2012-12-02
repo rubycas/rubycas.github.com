@@ -10,13 +10,19 @@ stylesheet: index
   providing a cross-domain single sign-on solution for web applications.
 </p>
 
-Overview
-RubyCAS-Server gives you:
-A stand-alone central login page where the user enters their credentials (i.e. their username and password).
-A mechanism for validating the user's credentials against various backends (a table in a SQL database, ActiveDirectory/LDAP, Google accounts, etc.)
-A back-end validator where CAS-enabled client applications connect to check whether the current user is authenticated (if the user has already been authenticated with the CAS server, then they are permitted to proceed, otherwise they are redirected to the CAS server's login page for authentication).
-Full compatibility with the open, multi-platform CAS protocol (CAS clients are implemented for a wide range of platforms, including PHP, various Java frameworks, .NET, Zope, etc.)
-Multi-language localization -- RubyCAS-Server automatically detects the user's preferred language and presents the appropriate interface.
+
+
+<h2>Overview</h2>
+
+<h3>RubyCAS-Server gives you:</h3>
+<ul>
+  <li>A stand-alone <strong>central login page</strong> where the user enters their credentials (i.e. their username and password).</li>
+  <li>A mechanism for <strong>validating the user's credentials against various backends</strong> (a table in a SQL database, ActiveDirectory/LDAP, Google accounts, etc.)</li>
+  <li>A back-end validator where CAS-enabled client applications connect to check whether the current user is authenticated (if the user has already been authenticated with the CAS server, then they are permitted to proceed, otherwise they are redirected to the CAS server's login page for authentication).</li>
+  <li>Full compatibility with the open, multi-platform CAS protocol (CAS clients are implemented for a wide range of platforms, including PHP, various Java frameworks, .NET, Zope, etc.)</li>
+  <li>Multi-language localization -- RubyCAS-Server automatically detects the user's preferred language and presents the appropriate interface.</li>
+</ul>
+
 Why you would want/need this:
 CAS allows you to share authentication across domains. That is, a service at myservice.com and another service at anotherservice.com can share the same sign-on session (without CAS, sharing session information across domains is a lot harder than it sounds -- browsers are specifically designed to make this difficult).
 The user only sees the login page once -- the first time they try to access any one of your CAS-protected services, and never again until they log out or their single-sign on session expires.
