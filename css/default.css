@@ -42,20 +42,25 @@ body {
 }
 
 
-#header{position:relative}
+#header{
+  border-bottom: 1px solid #AF2323;
+  position:relative;
+}
 
 #content{
   float: right;
-  width: 760px
+  width: 760px;
+  padding-top: 10px;
 }
 
 #navigation{
   float:left;
-  width:200px
+  width:200px;
+  padding-top: 10px;
 }
 
 #extra{
   clear:both;
-  width:100%
+  width:100%;
 }
 
